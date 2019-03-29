@@ -1,0 +1,26 @@
+set test "Artificial traces"
+
+proc compare_output {filename size policy} {
+    global tool
+
+    set test_output [exec cat traces/${filename}.val.out | ./${tool} --num-pages $size --policy $policy]
+    set good_output [exec cat traces/${filename}.val.out | ./${tool}-good --num-pages $size --policy $policy]
+
+    if {[string compare $test_output $good_output] == 0} {
+	pass "$filename/$size/$policy"
+    } else {
+	fail "$filename/$size/$policy"
+    }
+}
+
+proc multi_compare_output {filename} {
+    global POLICY
+
+    for {set i 1} {$i < 20} {incr i} {
+	compare_output $filename $i $POLICY
+    }
+}
+
+foreach file {chapter-22 sequential loop random overlap} {
+    multi_compare_output $file
+}

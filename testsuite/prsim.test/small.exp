@@ -1,0 +1,27 @@
+set test "Small traces"
+
+proc compare_output {filename size policy} {
+    global tool
+
+    set test_output [exec zcat traces/${filename}.val.out | ./${tool} --num-pages $size --policy $policy]
+    set good_output [exec zcat traces/${filename}.val.out | ./${tool}-good --num-pages $size --policy $policy]
+
+    if {[string compare $test_output $good_output] == 0} {
+	pass "$filename/$size/$policy"
+    } else {
+	fail "$filename/$size/$policy"
+    }
+}
+
+proc multi_compare_output {filename max_size} {
+    global POLICY
+
+    puts "Testing $filename ..."
+    for {set i 1} {$i < 50} {incr i} {
+	compare_output $filename [expr int(rand() * $max_size + 1)] $POLICY
+    }
+}
+
+foreach file {cat ls gzip} size {181 269 191} {
+    multi_compare_output $file $size
+}
