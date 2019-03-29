@@ -1,3 +1,24 @@
-This is the testing framework for the COS 421 lab.  Currently, it
-holds the initial tests for the TU sh lab.  Other tests will be added
-as the course evolves.
+# Page Replacement Simulator
+`prsim.cpp` contains the code for a memory page replacement simulator that uses two policies for pace replacement, First In First Out (FIFO) and random. It takes in the number of pages and the desired policy as arguments and reads instructions from large trace files and prints out the number of page faults. I use an array-like data structure for storing the page numbers as longs and writing separate methods for insertion and replacement based on policy.
+
+## Build
+```
+$ g++ -o prsim prsim.cpp
+```
+
+## Run
+```
+$ zcat <path/to/trace> | ./prsim --num-pages <number of pages> --policy <random/FIFO>
+```
+
+## Testing
+The full test suite will take ~44 hours to run, it is advised to only run [small.exp](testsuite/prsim.test/small.exp), [artificial.exp](testsuite/prsim.test/artificial.exp), and [programmatic.exp](testsuite/prsim.test/programmatic.exp), as they will finish in under 3 minutes total.
+```
+$ runtest --tool prsim POLICY=<random/FIFO> <test1.exp> <test2.exp>
+```
+
+## Analysis
+The analysis of the page replacement simulator can be found in the file [Page_Replacement_Simulator_Analysis.pdf](Page_Replacement_Simulator_Analysis.pdf)
+
+## Notes
+Please be aware that the runtimes for large numbers of pages will range anywhere from 5 to 26 hours.
