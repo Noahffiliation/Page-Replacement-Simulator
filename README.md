@@ -21,7 +21,7 @@ $ runtest --tool prsim POLICY=<random/FIFO> <test1.exp> <test2.exp>
 ```
 
 ## Analysis
-The analysis of the page replacement simulator can be found in the file [Page_Replacement_Simulator_Analysis.pdf](Page_Replacement_Simulator_Analysis.pdf)
+The analysis of the page replacement simulator can be found in the file `Page_Replacement_Simulator_Analysis.pdf`.
 
 ## Notes
 Please be aware that the runtimes for large numbers of pages will range anywhere from 5 to 26 hours.
