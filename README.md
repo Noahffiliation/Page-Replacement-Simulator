@@ -1,6 +1,12 @@
 # Page Replacement Simulator
 `prsim.cpp` contains the code for a memory page replacement simulator that uses two policies for pace replacement, First In First Out (FIFO) and random. It takes in the number of pages and the desired policy as arguments and reads instructions from large trace files and prints out the number of page faults. I use an array-like data structure for storing the page numbers as longs and writing separate methods for insertion and replacement based on policy.
 
+## Requirements
+- dejagnu for `runtest`
+```
+sudo apt install dejagnu
+```
+
 ## Build
 ```
 $ g++ -o prsim prsim.cpp
