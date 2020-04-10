@@ -173,16 +173,20 @@ int main(int argc, char **argv) {
 
     // Unsigned int for holding up to 3 billion as a number
     unsigned int num_faults;
+    // Captitalize 'random' to match output with 'prsim-good'
+    char *tmp;
     if (strcmp(p, "random") == 0) {
         num_faults = rrandom(n);
+        tmp = (char *) "Random";
     } else if (strcmp(p, "FIFO") == 0) {
         num_faults = fifo(n);
+        tmp = (char *) "FIFO";
     } else {
         printf("Error: choose another policy\n");
     }
 
     // Print results
-    printf("%s %d: %u\n", p, n, num_faults);
+    printf("%s %d: %u\n", tmp, n, num_faults);
 
     return 0;
 }

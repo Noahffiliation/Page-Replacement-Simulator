@@ -1,4 +1,5 @@
 prsim
 prsim.log
 prsim.sum
+*.out
 traces
