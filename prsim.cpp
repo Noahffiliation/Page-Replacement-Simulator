@@ -97,7 +97,7 @@ unsigned int rrandom(int n) {
             }
         }
     }
-    free(list);
+    delete list;
 
     return num_faults;
 }
@@ -135,7 +135,7 @@ unsigned int fifo(int n) {
             }
         }
     }
-    free(list);
+    delete list;
 
     return num_faults;
 }
