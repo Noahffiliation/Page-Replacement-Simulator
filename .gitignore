@@ -3,3 +3,4 @@ prsim.log
 prsim.sum
 *.out
 traces
+.vscode
